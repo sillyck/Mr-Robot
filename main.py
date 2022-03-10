@@ -1,9 +1,10 @@
 import serial
 
 robot = serial.Serial('/dev/ttyACM0', 115200)
-comando = ('cmd_vel[0.1]')
+comando = 'cmd_vel[0.1,0,0]'
 
-def main(letra):
+
+def main():
     while True:
         key = input('Introduce un comando:  ')
         # print key
@@ -23,6 +24,7 @@ def main(letra):
 
         else:
             print("detenido")
+
 
 def functionMover():
     return comando
