@@ -6,13 +6,12 @@ comando = ('cmd_vel[0.1]')
 def main(letra):
     while True:
         key = input('Introduce un comando:  ')
-        robot.write(key.encode())
         # print key
         if key == 113:
             break
         elif key == 'W':
             print("adelante")
-            functionMover()
+            robot.write(functionMover().encode())
         elif key == 97:
             print("izquierda")
 
