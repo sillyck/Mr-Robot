@@ -1,7 +1,7 @@
 import serial
 
 robot = serial.Serial('/dev/ttyACM0', 115200)
-
+comando = ('cmd_vel[0.1]')
 
 def main(letra):
     while True:
@@ -12,7 +12,7 @@ def main(letra):
             break
         elif key == 'W':
             print("adelante")
-            cmd_vel[0.1, 0.1, 0.5]
+            functionMover()
         elif key == 97:
             print("izquierda")
 
@@ -25,5 +25,5 @@ def main(letra):
         else:
             print("detenido")
 
-
-robot.close();
+def functionMover():
+    return comando
