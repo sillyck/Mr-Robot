@@ -14,7 +14,7 @@ while True:
     
     key = input('Introduce un comando:  ')
     # print keyW
-    if key == 'W' | key == 'w':
+    if key == 'W' or key == 'w':
         print("adelante")
         # Envia al arduino el comando cmd_vel
         robot.write(delante.encode())
@@ -22,7 +22,7 @@ while True:
         # Recibimos la inforación del arduino y lo imprimimos por pantalla
         variable = robot.readline()
         print (variable)
-    elif key == 'S' | key == 's':
+    elif key == 'S' or key == 's':
         print("atras")
 
         robot.write(atras.encode())
@@ -30,7 +30,7 @@ while True:
 
         variable = robot.readline()
         print (variable)
-    elif key == 'D' | key == 'd':
+    elif key == 'D' or key == 'd':
         print("derecha")
 
         robot.write(derecha.encode())
@@ -38,7 +38,7 @@ while True:
 
         variable = robot.readline()
         print (variable)
-    elif key == 'A' | key == 'a':
+    elif key == 'A' or key == 'a':
         print("izquierda")
 
         robot.write(izquierda.encode())
@@ -46,7 +46,7 @@ while True:
 
         variable = robot.readline()
         print (variable)
-    elif key == 'E' | key == 'e':
+    elif key == 'E' or key == 'e':
         print("Rotando hacia la derecha")
 
         robot.write(rot_der.encode())
@@ -54,7 +54,7 @@ while True:
 
         variable = robot.readline()
         print (variable)
-    elif key == 'Q' | key == 'q':
+    elif key == 'Q' or key == 'q':
         print("Rotando hacia la izquierda")
 
         robot.write(rot_iz.encode())
