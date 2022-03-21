@@ -1,3 +1,4 @@
+import main
 from cgitb import text
 from tkinter import * # Importamos libreria 
 
@@ -12,7 +13,7 @@ lb4 = Label(text= 'D => Derecha', fg = 'blue', font = ('Liberation Serif', 8), w
 lb5 = Label(text= 'E => Rotación derecha', fg = 'blue', font = ('Liberation Serif', 8), width = 20, height = 2).place(x=300,y=0)
 lb6 = Label(text= 'Q => Rotación izqueirda', fg = 'blue', font = ('Liberation Serif', 8), width = 20, height = 2).place(x=303,y=50)
 
-teclaW = Button(text = "W", width = 5, height = 2).place(x = 250, y = 300)
+teclaW = Button(text = "W", width = 5, height = 2, command=movimiento('W')).place(x = 250, y = 300)
 teclaS = Button(text = "S", width = 5, height = 2).place(x = 250, y = 350)
 teclaD = Button(text = "D", width = 5, height = 2).place(x = 300, y = 350)
 teclaA = Button(text = "A", width = 5, height = 2).place(x = 200, y = 350)
