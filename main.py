@@ -1,3 +1,4 @@
+from tkinter import W
 import serial
 # Variables, velocidades del robot
 delante = 'cmd_vel[0.1,0,0]'
@@ -6,19 +7,27 @@ derecha = 'cmd_vel[0,0.1,0]'
 izquierda = 'cmd_vel[0,-0.1,0]'
 rot_der = 'cmd_vel[0,0,0.5]'
 rot_iz = 'cmd_vel[0,0,-0.5]'
+sensor = 'getSensors'
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
+
 while True:
     key = input('Introduce un comando:  ')
-    # print keyW
-    if key == 'W' or key == 'w' or k == 'W' or k == 'w':
+
+    if key == 'W' or key == 'w':
         print("adelante")
         # Envia al arduino el comando cmd_vel
         robot.write(delante.encode())
         robot.write('\n'.encode()) #Ponemos \n (asignamos nueva linia para que no se junte con el siguiente comando y no de error)
         # Recibimos la inforación del arduino y lo imprimimos por pantalla
+        robot.write(sensor.encode())
+        robot.write('\n'.encode())
         variable = robot.readline()
-        print (variable)
+        varsens = variable.decode("utf-8")
+        # archivo = open("sensores.txt", "r+")
+        # archivo.write(varsens)
+        # archivo.read()
+        print(varsens)
     elif key == 'S' or key == 's':
         print("atras")
 
