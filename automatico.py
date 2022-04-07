@@ -19,7 +19,6 @@ robot = serial.Serial('/dev/ttyACM0', 115200)
 
 while True:
     cont=0
-    print("hola")
     # Recibimos la inforación del arduino y lo imprimimos por pantalla
     robot.write(sensor.encode())
     robot.write('\n'.encode())
@@ -28,16 +27,26 @@ while True:
     if cont == 0:
         variable = robot.readline()
         cont = 1
-    # if cont == 1:
-    #     variable = robot.readline()
-    # variable = robot.readline()
+
     varsens = variable.decode("utf-8")
-    varsens = re.sub("Basic Encoder Test:", "0",varsens)
+    varsens = re.sub("Basic Encoder Test:", "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",varsens)
     varsens = re.sub("\\r|\\n", "",varsens) #Quitamos el \r y \n que se le añade al mensaje del sensor
     array_sensores_string=varsens.split(',') #Dividimos el mensaje y lo ponemos en el array
-    # array_sensores = [int(x) for x in array_sensores_string]
+    # Convertimos el array string a int
     array_sensores = list(map(int, array_sensores_string))
     print(array_sensores)
-    sleep(1)
-    # robot.close()
+
+    sleep(2)
+    if array_sensores[8] < 17 and array_sensores[9] < 13 and array_sensores[10] < 13 and array_sensores[11] < 17:
+        robot.write(delante.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+
+    elif array_sensores[8] == -1 or array_sensores[9] == -1 or array_sensores[10] == -1 or array_sensores[11] == -1:
+        print("")
+
+    elif array_sensores[8] > 200 or array_sensores[9] > 200 or array_sensores[10] > 200 or array_sensores[11] > 200:
+        print("no")
+        robot.close()
+        break
 
