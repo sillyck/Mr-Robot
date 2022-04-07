@@ -29,6 +29,7 @@ while True:
         cont = 1
 
     varsens = variable.decode("utf-8")
+    #Pasamos el siguiente texto a un numero que no utilicemos solo para ponerlo en el array
     varsens = re.sub("Basic Encoder Test:", "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",varsens)
     varsens = re.sub("\\r|\\n", "",varsens) #Quitamos el \r y \n que se le añade al mensaje del sensor
     array_sensores_string=varsens.split(',') #Dividimos el mensaje y lo ponemos en el array
