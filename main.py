@@ -8,8 +8,29 @@ izquierda = 'cmd_vel[0,-0.1,0]'
 rot_der = 'cmd_vel[0,0,0.5]'
 rot_iz = 'cmd_vel[0,0,-0.5]'
 sensor = 'getSensors'
+cont = 0
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
+
+# def funcion_Sensor():
+#     robot.write(sensor.encode())
+#     robot.write('\n'.encode())
+#     # Funcion para quitar mensajes.
+#     if cont == 0:
+#         variable = robot.readline()
+#         variable = robot.readline()
+#         cont=1
+#     if cont == 2:
+#         variable = robot.readline()
+#         cont = 1 
+#     if cont == 1:
+#         variable = robot.readline()
+#         cont = 2
+#     varsens = variable.decode("utf-8")
+#     # archivo = open("sensores.txt", "r+")
+#     # archivo.write(varsens)
+#     # archivo.read()
+#     print(varsens)   
 
 while True:
     key = input('Introduce un comando:  ')
@@ -22,7 +43,17 @@ while True:
         # Recibimos la inforación del arduino y lo imprimimos por pantalla
         robot.write(sensor.encode())
         robot.write('\n'.encode())
-        variable = robot.readline()
+        # Funcion para quitar mensajes.
+        if cont == 0:
+            variable = robot.readline()
+            variable = robot.readline()
+            cont=1
+        if cont == 2:
+            variable = robot.readline()
+            cont = 1 
+        if cont == 1:
+            variable = robot.readline()
+            cont = 2
         varsens = variable.decode("utf-8")
         # archivo = open("sensores.txt", "r+")
         # archivo.write(varsens)
@@ -70,5 +101,5 @@ while True:
         print (variable)
     else:
         print("detenido")
-        robot.close()
+        # robot.close()
         break
