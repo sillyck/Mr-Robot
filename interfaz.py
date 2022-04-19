@@ -1,21 +1,22 @@
-from cgitb import text
 from tkinter import *
-from tkinter import font
+import tkinter 
+import os
 
-robot = Tk()
+window = tkinter.Tk()
+window.geometry("625x300")
+window.resizable(False, False)
 
-app_width = 1000
-app_height = 500
+def obrir_manual():
+    os.system('manual.py')
 
-screen_width = robot.winfo_screenwidth()
-screen_height = robot.winfo_screenheight()
+def obrir_automatic():
+    os.system('automatic.py')
 
-robot.geometry(f'{app_width}x{app_height}+{100}+{100}')
+label = Label(window, text="Com vols moure el robot?")
+label.pack(anchor=CENTER)
+label.config(font=("Helvetica",24)) 
 
-botonPIzquierda=Button(text="Manual", width=10, height=5)
-botonPDerecha=Button(text="Automatico", width=10, height=5)
+boto1 = tkinter.Button(window, text="Automatic", command=obrir_automatic).place(x=230, y=100)
+boto2 = tkinter.Button(window, text="Manual", command=obrir_manual).place(x=330, y=100)
 
-botonPIzquierda.grid(row=3, column=0)
-botonPDerecha.grid(row=3, column=4)
-
-robot.mainloop()
+window.mainloop ()
