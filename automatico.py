@@ -1,8 +1,8 @@
 import re
 from time import sleep
 from tkinter import W
-
 import serial
+
 # Variables, velocidades del robot
 delante = 'cmd_vel[0.1,0,0]'
 atras = 'cmd_vel[-0.1,0,0]'
