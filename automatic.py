@@ -10,6 +10,7 @@ def back():
     print("Atras")
 
 def obrir_interfaz():
+    ventana.destroy()
     os.system('interfaz.py')
 
 boto1 = tkinter.Button(ventana, text="Automatic", command=back).place(x=275, y=125)
