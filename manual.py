@@ -1,19 +1,44 @@
 from tkinter import *
 import tkinter 
 import os
+from turtle import right
 
 ventana = tkinter.Tk()
 ventana.geometry("625x300")
 ventana.resizable(False, False)
 
-def back():
-    print("Atras")
+def provisional():
+    print("a")
 
-def obrir_interfaz():
+def back():
     ventana.destroy()
     os.system('interfaz.py')
 
-boto1 = tkinter.Button(ventana, text="Manual", command=back).place(x=275, y=125)
-boto2 = tkinter.Button(ventana, text="Home", command=obrir_interfaz).place(x=0, y=0)
+window_width = 625
+window_height = 300
+
+screen_width = ventana.winfo_screenwidth()
+screen_height = ventana.winfo_screenheight()
+
+x = int((screen_width/2) - (window_width/2))
+y = int((screen_height/2) - (window_height/2))
+
+ventana.geometry(f'{window_width}x{window_height}+{x}+{y}')
+
+photo = PhotoImage(file = "home.png")
+up = PhotoImage(file = "arriba.png")
+rightt = PhotoImage(file = "derecha.png")
+down = PhotoImage(file = "abajo.png")
+left = PhotoImage(file = "izquierda.png")
+rotateR = PhotoImage(file = "rotateR.png")
+rotateL = PhotoImage(file = "rotateL.png")
+
+boto_home = tkinter.Button(ventana, image = photo, command=back).place(x=0, y=0)
+boto_up = tkinter.Button(ventana, image = up, command=provisional).place(x=290, y=163)
+boto_rightt = tkinter.Button(ventana, image = rightt, command=provisional).place(x=327, y=200)
+boto_down = tkinter.Button(ventana, image = down, command=provisional).place(x=290, y=200)
+boto_left = tkinter.Button(ventana, image = left, command=provisional).place(x=253, y=200)
+boto_rotateR = tkinter.Button(ventana, image = rotateR, command=provisional).place(x=327, y=163)
+boto_rotateL = tkinter.Button(ventana, image = rotateL, command=provisional).place(x=253, y=163)
 
 ventana.mainloop ()
