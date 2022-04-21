@@ -1,7 +1,6 @@
 from tkinter import *
 import tkinter 
 import os
-from turtle import right
 
 ventana = tkinter.Tk()
 ventana.geometry("625x300")
