@@ -3,7 +3,6 @@ import tkinter
 import os
 
 window = tkinter.Tk()
-window.geometry("625x300")
 window.resizable(False, False)
 
 def obrir_manual():

@@ -3,7 +3,6 @@ import tkinter
 import os
 
 ventana = tkinter.Tk()
-ventana.geometry("625x300")
 ventana.resizable(False, False)
 
 def provisional():

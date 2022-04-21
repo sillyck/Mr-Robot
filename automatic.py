@@ -3,7 +3,6 @@ import tkinter
 import os
 
 ventana = tkinter.Tk()
-ventana.geometry("625x300")
 ventana.resizable(False, False)
 
 def auto():
@@ -24,7 +23,7 @@ y = int((screen_height/2) - (window_height/2))
 
 ventana.geometry(f'{window_width}x{window_height}+{x}+{y}')
 
-photo = PhotoImage(file = "home.png")
+photo = PhotoImage(file = "img/home.png")
 
 boto1 = tkinter.Button(ventana, text="Automatic", command=auto).place(x=275, y=125)
 boto2 = tkinter.Button(ventana, image = photo, command=back).place(x=0, y=0)
