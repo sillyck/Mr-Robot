@@ -4,12 +4,13 @@ from tkinter import W
 import serial
 
 # Variables, velocidades del robot
-delante = 'cmd_vel[0.1,0,0]'
+delante = 'cmd_vel[0.03,0,0]'
 atras = 'cmd_vel[-0.1,0,0]'
-derecha = 'cmd_vel[0,0.1,0]'
-izquierda = 'cmd_vel[0,-0.1,0]'
+derecha = 'cmd_vel[0,0.008,0]'
+izquierda = 'cmd_vel[0,-0.008,0]'
 rot_der = 'cmd_vel[0,0,0.5]'
 rot_iz = 'cmd_vel[0,0,-0.5]'
+parar = 'cmd_vel[0,0,0]'
 sensor = 'getSensors'
 cont = 0
 array_sensores_string= [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -37,17 +38,43 @@ while True:
     array_sensores = list(map(int, array_sensores_string))
     print(array_sensores)
 
-    sleep(2)
-    if array_sensores[8] < 17 and array_sensores[9] < 13 and array_sensores[10] < 13 and array_sensores[11] < 17:
+    sleep(1)
+    # if array_sensores[8] < 17 and array_sensores[9] < 13 and array_sensores[10] < 13 and array_sensores[11] < 17:
+    #     robot.write(delante.encode())
+    #     robot.write('\n'.encode())
+    #     variable = robot.readline()
+
+    # elif array_sensores[8] == -1 or array_sensores[9] == -1 or array_sensores[10] == -1 or array_sensores[11] == -1:
+    #     print("")
+
+    # elif array_sensores[8] > 200 or array_sensores[9] > 200 or array_sensores[10] > 200 or array_sensores[11] > 200:
+    #     print("no")
+    #     robot.close()
+    #     break
+    if array_sensores[2] == 2500 and array_sensores[3] == 2500 and array_sensores[4] == 2500 and array_sensores[5] == 2500:
         robot.write(delante.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
+    elif array_sensores[3] == -1 or array_sensores[4] == -1:
+        print("sigue")
 
-    elif array_sensores[8] == -1 or array_sensores[9] == -1 or array_sensores[10] == -1 or array_sensores[11] == -1:
-        print("")
-
-    elif array_sensores[8] > 200 or array_sensores[9] > 200 or array_sensores[10] > 200 or array_sensores[11] > 200:
-        print("no")
+    elif array_sensores[4] < 2500 and array_sensores[3] < 2500:
+        print("parado")
+        robot.write(parar.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
         robot.close()
         break
+
+    elif array_sensores[1] < 1500:
+        robot.write(derecha.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+        print("derecha")
+    elif array_sensores[6] < 1500:
+        robot.write(izquierda.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+        print("izquierda")
+    
 
