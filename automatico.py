@@ -11,6 +11,8 @@ izquierda = 'cmd_vel[0,-0.008,0]'
 rot_der = 'cmd_vel[0,0,0.5]'
 rot_iz = 'cmd_vel[0,0,-0.5]'
 parar = 'cmd_vel[0,0,0]'
+delder = 'cmd_vel[0.03,0.1,0]'
+deliz = 'cmd_vel[0.03,-0.1,0]'
 sensor = 'getSensors'
 cont = 0
 array_sensores_string= [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -51,12 +53,17 @@ while True:
     #     print("no")
     #     robot.close()
     #     break
-    if array_sensores[2] == 2500 and array_sensores[3] == 2500 and array_sensores[4] == 2500 and array_sensores[5] == 2500:
+    if array_sensores[3] == 2500 or array_sensores[4] == 2500:
         robot.write(delante.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
     elif array_sensores[3] == -1 or array_sensores[4] == -1:
         print("sigue")
+    
+    elif array_sensores[2] >= 2000 or array_sensores[5] >= 2000:
+        robot.write(delante.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
 
     elif array_sensores[4] < 2500 and array_sensores[3] < 2500:
         print("parado")
@@ -66,15 +73,27 @@ while True:
         robot.close()
         break
 
-    elif array_sensores[1] < 1500:
+    elif array_sensores[1] > 2000 and array_sensores[2] < 1900:
         robot.write(derecha.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
         print("derecha")
-    elif array_sensores[6] < 1500:
+    elif array_sensores[6] > 2000 and array_sensores[5] < 1900:
         robot.write(izquierda.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
         print("izquierda")
+    
+    elif array_sensores[0] > 2000:
+        robot.write(deliz.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+        print("izquierda")
+    elif array_sensores[7] > 2000:
+        robot.write(delder.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+        print("derecha")
+
     
 
