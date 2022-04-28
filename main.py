@@ -14,6 +14,7 @@ rot_der = 'cmd_vel[0,0,0.1]'
 rot_iz = 'cmd_vel[0,0,-0.1]'
 sensor = 'getSensors'
 cont = 0
+a=0
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
 
