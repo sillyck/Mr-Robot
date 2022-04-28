@@ -14,7 +14,6 @@ rot_der = 'cmd_vel[0,0,0.1]'
 rot_iz = 'cmd_vel[0,0,-0.1]'
 sensor = 'getSensors'
 cont = 0
-a=0
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
 
@@ -89,7 +88,7 @@ while True:
         print("detenido")
         robot.close()
         break
-# Recibimos la inforación del arduino y lo imprimimos por pantalla
+    # Recibimos la inforación del arduino y lo imprimimos por pantalla
     robot.write(sensor.encode())
     robot.write('\n'.encode())
     # Funcion para quitar mensajes.
@@ -104,6 +103,6 @@ while True:
         variable = robot.readline()
         cont = 2
     varsens = variable.decode("utf-8")
-
+    
     print(varsens)
     sleep(1)
