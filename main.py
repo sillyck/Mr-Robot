@@ -95,13 +95,13 @@ while True:
     if cont == 0:
         variable = robot.readline()
         variable = robot.readline()
-        # cont=1
+        cont=1
     # if cont == 2:
     #     variable = robot.readline()
     #     cont = 1 
-    # if cont == 1:
-    #     variable = robot.readline()
-    #     cont = 2
+    if cont == 1:
+        variable = robot.readline()
+        # cont = 2
     varsens = variable.decode("utf-8")
     
     print(varsens)
