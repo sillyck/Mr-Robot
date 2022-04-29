@@ -2,11 +2,22 @@ from tkinter import *
 import tkinter 
 import os
 
+#Moviment valors
+delante = 'cmd_vel[0.1,0,0]'
+atras = 'cmd_vel[-0.1,0,0]'
+derecha = 'cmd_vel[0,0.1,0]'
+izquierda = 'cmd_vel[0,-0.1,0]'
+rot_der = 'cmd_vel[0,0,0.1]'
+rot_iz = 'cmd_vel[0,0,-0.1]'
+
+
 ventana = tkinter.Tk()
 ventana.resizable(False, False)
 
-def provisional():
-    print("a")
+def w():
+    print("adelante")
+    ventana.write(delante.encode())
+    ventana.write('\n'.encode())
 
 def back():
     ventana.destroy()
@@ -32,11 +43,11 @@ rotateR = PhotoImage(file = "img/rotateR.png")
 rotateL = PhotoImage(file = "img/rotateL.png")
 
 boto_home = tkinter.Button(ventana, image = photo, command=back).place(x=0, y=0)
-boto_up = tkinter.Button(ventana, image = up, command=provisional).place(x=290, y=163)
-boto_rightt = tkinter.Button(ventana, image = rightt, command=provisional).place(x=327, y=200)
-boto_down = tkinter.Button(ventana, image = down, command=provisional).place(x=290, y=200)
-boto_left = tkinter.Button(ventana, image = left, command=provisional).place(x=253, y=200)
-boto_rotateR = tkinter.Button(ventana, image = rotateR, command=provisional).place(x=327, y=163)
-boto_rotateL = tkinter.Button(ventana, image = rotateL, command=provisional).place(x=253, y=163)
+boto_up = tkinter.Button(ventana, image = up, command=w).place(x=290, y=163)
+boto_rightt = tkinter.Button(ventana, image = rightt, command=w).place(x=327, y=200)
+boto_down = tkinter.Button(ventana, image = down, command=w).place(x=290, y=200)
+boto_left = tkinter.Button(ventana, image = left, command=w).place(x=253, y=200)
+boto_rotateR = tkinter.Button(ventana, image = rotateR, command=w).place(x=327, y=163)
+boto_rotateL = tkinter.Button(ventana, image = rotateL, command=w).place(x=253, y=163)
 
 ventana.mainloop ()
