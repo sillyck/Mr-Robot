@@ -10,8 +10,8 @@ derecha = 'cmd_vel[0,0.1,0]'
 derecha2 = 'cmd_vel[0,0.02,0]'
 izquierda = 'cmd_vel[0,-0.1,0]'
 izquierda2 = 'cmd_vel[0,-0.02,0]'
-rot_der = 'cmd_vel[0,0,0.1]'
-rot_iz = 'cmd_vel[0,0,-0.1]'
+rot_der = 'cmd_vel[0,0,0.5]'
+rot_iz = 'cmd_vel[0,0,-0.5]'
 sensor = 'getSensors'
 cont = 0
 # Conexión a arduino
@@ -95,13 +95,13 @@ while True:
     if cont == 0:
         variable = robot.readline()
         variable = robot.readline()
-        cont=1
+        # cont=1
     # if cont == 2:
     #     variable = robot.readline()
     #     cont = 1 
-    if cont == 1:
-        variable = robot.readline()
-        # cont = 2
+    # if cont == 1:
+    #     variable = robot.readline()
+    #     # cont = 2
     varsens = variable.decode("utf-8")
     
     print(varsens)
