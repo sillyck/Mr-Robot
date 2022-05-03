@@ -64,7 +64,7 @@ while True:
     # elif array_sensores[8] > 200 or array_sensores[9] > 200 or array_sensores[10] > 200 or array_sensores[11] > 200:
     #     print("no")
     #     robot.close()
-    #     break
+    #     breakk
 
     # Codigo para los sensores de movimiento
     if array_sensores[3] == 2500 and array_sensores[4] == 2500:
