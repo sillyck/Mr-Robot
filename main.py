@@ -13,6 +13,10 @@ izquierda2 = 'cmd_vel[0,-0.02,0]'
 rot_der = 'cmd_vel[0,0,0.5]'
 rot_iz = 'cmd_vel[0,0,-0.5]'
 sensor = 'getSensors'
+
+delder = 'cmd_vel[0.1,-0.1,0.6]'
+
+deliz = 'cmd_vel[0.012,0,-0.16]'
 cont = 0
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
@@ -31,6 +35,12 @@ while True:
         print("delante2")
 
         robot.write(delante2.encode())
+        robot.write('\n'.encode()) 
+
+    elif key == 'k' or key == 'K':
+        print("delder")
+
+        robot.write(delder.encode())
         robot.write('\n'.encode()) 
 
     elif key == 'S' or key == 's':
