@@ -16,8 +16,8 @@ delder = 'cmd_vel[0.05,-0.04,0.3]'
 deliz = 'cmd_vel[0.05,0.04,-0.3]'
 # delder = 'cmd_vel[0.05,-0.1,0.6]'
 # deliz = 'cmd_vel[0.05,0.1,-0.6]'
-der2 = 'cmd_vel[0,0.008,0]'
-iz2 = 'cmd_vel[0,-0.008,0]'
+der2 = 'cmd_vel[0.01,0.008,0]'
+iz2 = 'cmd_vel[0.01,-0.008,0]'
 der3 = 'cmd_vel[0,0.01,0]'
 iz3 = 'cmd_vel[0,-0.01,0]'
 sensor = 'getSensors'
@@ -69,7 +69,7 @@ while True:
     #     breakk
 
     # Codigo para los sensores de movimiento
-    if array_sensores[3] == 2500 and array_sensores[4] == 2500:
+    if array_sensores[3] == 2500 and array_sensores[4] == 2500 or array_sensores[3] == 2500 and array_sensores[2] != 2500  or array_sensores[4] == 2500 and array_sensores[5] != 2500:
         robot.write(delante.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
@@ -94,13 +94,23 @@ while True:
             robot.write('\n'.encode())
             variable = robot.readline()
             print("rotiz")
+    elif array_sensores[0] == 2500 and array_sensores[1] != 2500:
+            robot.write(iz2.encode())
+            robot.write('\n'.encode())
+            variable = robot.readline()
+            print("derecha6")
+
+            robot.write(rot_iz.encode())
+            robot.write('\n'.encode())
+            variable = robot.readline()
+            print("rotiz6")
 
     elif array_sensores[4] == 2500 and array_sensores[5] == 2500 or array_sensores[5] == 2500 and array_sensores[6] == 2500:
         robot.write(der2.encode())
         # robot.write(delder.encode())
         robot.write('\n'.encode())
-
         variable = robot.readline()
+
         print("izquierda")
         sensores()
         variable = robot.readline()
@@ -111,6 +121,17 @@ while True:
             robot.write('\n'.encode())
             variable = robot.readline()
             print("rotder")
+
+    elif array_sensores[7] == 2500 and array_sensores[6] != 2500:
+            robot.write(der2.encode())
+            robot.write('\n'.encode())
+            variable = robot.readline()
+            print("izquierda6")
+
+            robot.write(rot_der.encode())
+            robot.write('\n'.encode())
+            variable = robot.readline()
+            print("rotder6")
 
     elif array_sensores[2] > 2400 and array_sensores[1] > 2400 and array_sensores[0] > 2400 or array_sensores[3] > 2400 and array_sensores[2] > 2400 and array_sensores[1] > 2400 or array_sensores[1] > 2400 and array_sensores[0] > 2400 or array_sensores[3] > 2400 and array_sensores[2] > 2400 and array_sensores[1] > 2400 and array_sensores[0] > 2400:
         robot.write(deliz.encode())
