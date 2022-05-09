@@ -7,21 +7,19 @@ import serial
 # Variables, velocidades del robot
 delante = 'cmd_vel[0.03,0,0]'
 atras = 'cmd_vel[-0.1,0,0]'
-derecha = 'cmd_vel[0,0.01,0]'
-izquierda = 'cmd_vel[0,-0.01,0]'
+derecha = 'cmd_vel[0,0.005,0]'
+derecha2 = 'cmd_vel[0,0.01,0]'
+izquierda = 'cmd_vel[0,-0.005,0]'
+izquierda2 = 'cmd_vel[0,-0.01,0]'
 rot_der = 'cmd_vel[0,0,0.07]'
 rot_iz = 'cmd_vel[0,0,-0.07]'
 parar = 'cmd_vel[0,0,0]'
-# delder = 'cmd_vel[0.05,-0.06,0.4]'
-# deliz = 'cmd_vel[0.05,0.06,-0.4]'
-delder = 'cmd_vel[0.05,-0.04,0.3]'
-deliz = 'cmd_vel[0.05,0.04,-0.3]'
+# delder = 'cmd_vel[0.03,-0.02,0.18]'
+# deliz = 'cmd_vel[0.03,0.02,-0.18]'
+delder = 'cmd_vel[0.025,-0.015,0.16]'
+deliz = 'cmd_vel[0.025,0.015,-0.16]'
 # delder = 'cmd_vel[0.05,-0.1,0.6]'
 # deliz = 'cmd_vel[0.05,0.1,-0.6]'
-der2 = 'cmd_vel[0.01,0.008,0]'
-iz2 = 'cmd_vel[0.01,-0.008,0]'
-der3 = 'cmd_vel[0,0.01,0]'
-iz3 = 'cmd_vel[0,-0.01,0]'
 sensor = 'getSensors'
 x = 0.03
 y = 0
@@ -56,6 +54,53 @@ while True:
     print(array_sensores)
 
     sleep(1)
+
+    if array_sensores[3] == 2500 and array_sensores[4] == 2500:
+        robot.write(delante.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+    
+    elif array_sensores[0] == 2500:
+        robot.write(izquierda2.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+        if array_sensores[0] == 2500 and  array_sensores[1] == 2500:
+            robot.write(deliz.encode())
+            robot.write('\n'.encode())
+            variable = robot.readline()
+
+    elif array_sensores[7] == 2500:
+        robot.write(derecha2.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+        if array_sensores[7] == 2500 and  array_sensores[6] == 2500:
+            robot.write(delder.encode())
+            robot.write('\n'.encode())
+            variable = robot.readline()
+
+    elif array_sensores[4] == 2500:
+        robot.write(derecha.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+
+    elif array_sensores[3] == 2500:
+        robot.write(izquierda.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+
+    elif array_sensores[1] == 2500 and array_sensores[2] == 2500 or array_sensores[0] == 2500 and array_sensores[1] == 2500  or array_sensores[0] == 2500:
+        robot.write(deliz.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+
+    elif array_sensores[6] == 2500 and array_sensores[5] == 2500 or array_sensores[7] == 2500 and array_sensores[6] == 2500 or array_sensores[7] == 2500:
+        robot.write(delder.encode())
+        robot.write('\n'.encode())
+        variable = robot.readline()
+
+
+
+
 
     # Codigo para los sensores de proximidad 
     # if array_sensores[8] < 17 and array_sensores[9] < 13 and array_sensores[10] < 13 and array_sensores[11] < 17:
@@ -159,75 +204,77 @@ while True:
     #     variable = robot.readline()
     #     print("izquierdasi")
 
-    if array_sensores[3] == 2500 and array_sensores[4] == 2500:
-        robot.write(comando.encode())
-        robot.write('\n'.encode())
-        variable = robot.readline()
-        print("adelante")
+    # if array_sensores[3] == 2500 and array_sensores[4] == 2500:
+    #     robot.write(comando.encode())
+    #     robot.write('\n'.encode())
+    #     variable = robot.readline()
+    #     print("adelante")
 
-    elif array_sensores[3] == 2500 and array_sensores[2] == 2500 and array_sensores[1] != 2500:
-        x=0.01
-        y=-0.012
-        z=-0.01
-        comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
-        robot.write(comando.encode())
-        robot.write('\n'.encode())
-        variable = robot.readline()
-        print("iz")
+    # elif array_sensores[3] == 2500 and array_sensores[2] == 2500 and array_sensores[1] != 2500:
+    #     x=0
+    #     y=-0.005
+    #     z=-0
+    #     comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
+    #     robot.write(comando.encode())
+    #     robot.write('\n'.encode())
+    #     variable = robot.readline()
+    #     print("iz")
     
-    elif array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] != 2500:
-        x=0.01
-        y=0.012
-        z=0.01
-        comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
-        robot.write(comando.encode())
-        robot.write('\n'.encode())
-        variable = robot.readline()
-        print("der")
+    # elif array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] != 2500:
+    #     x=0
+    #     y=0.005
+    #     z=0
+    #     comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
+    #     robot.write(comando.encode())
+    #     robot.write('\n'.encode())
+    #     variable = robot.readline()
+    #     print("der")
     
 
-    elif array_sensores[2] == 2500 and array_sensores[1] == 2500 and array_sensores[0] == 2500 or array_sensores[3] == 2500 and array_sensores[2] == 2500 and array_sensores[1] == 2500 or array_sensores[1] == 2500 and array_sensores[0] == 2500 or array_sensores[3] == 2500 and array_sensores[2] == 2500 and array_sensores[1] == 2500 and array_sensores[0] == 2500:
-        x= x + 0.02
-        y= y + 0.02
-        z= z - 0.1
-        comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
-        robot.write(comando.encode())
-        robot.write('\n'.encode())
-        variable = robot.readline()
-        print("derechasi")
-        while array_sensores[3] == 2500 and array_sensores[4] == 2500:
-            if array_sensores[3] == 2500 and array_sensores[4] == 2500:
-                x= 0.05
-                y= 0
-                z= 0
-                comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
-                robot.write(comando.encode())
-                robot.write('\n'.encode())
-                variable = robot.readline()
-                print("adelante")
+    # elif array_sensores[2] == 2500 and array_sensores[1] == 2500 and array_sensores[0] == 2500 or array_sensores[3] == 2500 and array_sensores[2] == 2500 and array_sensores[1] == 2500 or array_sensores[1] == 2500 and array_sensores[0] == 2500 or array_sensores[3] == 2500 and array_sensores[2] == 2500 and array_sensores[1] == 2500 and array_sensores[0] == 2500:
+    #     x= x + 0.02
+    #     y= y + 0.02
+    #     z= z - 0.1
+    #     comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
+    #     robot.write(comando.encode())
+    #     robot.write('\n'.encode())
+    #     variable = robot.readline()
+    #     print("derechasi")
+    #     while array_sensores[3] == 2500 and array_sensores[4] == 2500:
+    #         print("dentrowhile")
+    #         if array_sensores[3] == 2500 and array_sensores[4] == 2500:
+    #             print("dentroif")
+    #             x= 0.05
+    #             y= 0
+    #             z= 0
+    #             comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
+    #             robot.write(comando.encode())
+    #             robot.write('\n'.encode())
+    #             variable = robot.readline()
+    #             print("adelante")
     
-    elif array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] != 2500 and array_sensores[7] != 2500 or array_sensores[5] == 2500 and array_sensores[6] == 2500 and array_sensores[7] != 2500:
-        # x= 0.05
-        # y= -0.04
-        # z= 0.3
-        x= x + 0.02
-        y= y - 0.02
-        z= z + 0.1
-        comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
-        robot.write(comando.encode())
-        robot.write('\n'.encode())
-        variable = robot.readline()
-        print("izquierdasi")
-        while array_sensores[3] == 2500 and array_sensores[4] == 2500:
-            if array_sensores[3] == 2500 and array_sensores[4] == 2500:
-                x= 0.05
-                y= 0
-                z= 0
-                comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
-                robot.write(comando.encode())
-                robot.write('\n'.encode())
-                variable = robot.readline()
-                print("adelante")
+    # elif array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] != 2500 and array_sensores[7] != 2500 or array_sensores[5] == 2500 and array_sensores[6] == 2500 and array_sensores[7] != 2500:
+    #     # x= 0.05
+    #     # y= -0.04
+    #     # z= 0.3
+    #     x= x + 0.02
+    #     y= y - 0.02
+    #     z= z + 0.1
+    #     comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
+    #     robot.write(comando.encode())
+    #     robot.write('\n'.encode())
+    #     variable = robot.readline()
+    #     print("izquierdasi")
+    #     while array_sensores[3] == 2500 and array_sensores[4] == 2500:
+    #         if array_sensores[3] == 2500 and array_sensores[4] == 2500:
+    #             x= 0.05
+    #             y= 0
+    #             z= 0
+    #             comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
+    #             robot.write(comando.encode())
+    #             robot.write('\n'.encode())
+    #             variable = robot.readline()
+    #             print("adelante")
 
 
         # if array_sensores[3] != 2500 and array_sensores[4] != 2500:
