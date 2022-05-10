@@ -39,7 +39,7 @@ El fichero manual.py es la interfaz del modo manual, tiene botones con flechas p
 
 - Acabar la interfaz grafica
 - Mejorar el movimiento de proximidad
-- Brazo mecanico
+- Añadir y programar un brazo mecanico
 - Mejorar movimiento en modo automatico
 
 
