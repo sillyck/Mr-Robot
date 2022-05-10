@@ -4,7 +4,7 @@
 Proyecto donde se programa el movimiento del robot con sensores
 
 
-![Mr. Robot](https://github.com/EloySPAIN/PythonArduino/blob/master/logoMrRobot-senseFondo.png)
+![Mr. Robot](https://github.com/EloySPAIN/PythonArduino/blob/master/logoMrRobot-senseFondoPetita.png)
 
 
 ## Documentation
