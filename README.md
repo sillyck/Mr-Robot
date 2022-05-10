@@ -14,11 +14,11 @@ El robot tiene 2 modos de funcionamiento, modo automatico donde sigue una linia 
 es manual, controlandolo con las teclas WASD y Q (rotación hacia la izquierda) E (rotación hacia la derecha).
 El robot se conecta directamente al arduino con el puerto ttyACM0, con un baudi de 115200
 
-#### Main.py
+#### main.py
 En este fichero esta programado el movimiento del robot manualmente. Es un codigo bastante sencillo, utilizamos los comandos
 adelante, izquierda, etc. para moverlo. Utilizamos condiciones con if para redirigir el robot donde queramos, W= hacia adelante, S= atras, A= izquierda, D= derecha, E= rotar hacia la derecha, Q= rotar hacia la izquierda.
 
-#### Automatico.py
+#### automatico.py
 En este fichero esta programado el movimiento del robot en automatico. El robot se mueve obteniendo los sensores con la varable sensors
 (dentro tiene el comando que le envia al arduino (getSensors)) y los mete dentro de un array.
 Al obtener estos sensores algunas veces envia unos mensajes molestos, estos los cambiamos por numeros -1 (no se utilizan en el codigo) y lo
@@ -28,7 +28,7 @@ Hacemos las condiciones con if y elif para mover el robot dependiendo de que sen
 Tambien tiene una funcion que hace pararse cuando encuentra un obstaculo de por medio.
 
 ### In Progress:
-#### Interfaz.py, automatic.py, manual.py
+#### interfaz.py, automatic.py, manual.py
 Son ficheros donde esta programado una interfaz basica para cada modo que hay, el interfaz.py es la interfaz principal que sale
 al ejecutar el codigo, este tiene 2 botones que redirige hacia la interfaz automatic.py y a manual.py.  
 
