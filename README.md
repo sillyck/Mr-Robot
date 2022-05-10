@@ -27,7 +27,7 @@ asignamos dentro del array.
 Hacemos las condiciones con if y elif para mover el robot dependiendo de que sensor este pillando en ese mismo instante.
 Tambien tiene una funcion que hace pararse cuando encuentra un obstaculo de por medio.
 
-### En progreso:
+### In Progress:
 #### Interfaz.py, automatic.py, manual.py
 Son ficheros donde esta programado una interfaz basica para cada modo que hay, el interfaz.py es la interfaz principal que sale
 al ejecutar el codigo, este tiene 2 botones que redirige hacia la interfaz automatic.py y a manual.py.  
