@@ -16,24 +16,7 @@ rot_iz = 'cmd_vel[0,0,-0.07]'
 parar = 'cmd_vel[0,0,0]'
 delder = 'cmd_vel[0.025,-0.015,0.16]'
 deliz = 'cmd_vel[0.025,0.015,-0.16]'
-# delante = 'cmd_vel[0.03,0,0]'
-# atras = 'cmd_vel[-0.1,0,0]'
-# derecha = 'cmd_vel[0.02,0.005,0]'
-# derecha2 = 'cmd_vel[0,0.01,0]'
-# izquierda = 'cmd_vel[0.02,-0.005,0]'
-# izquierda2 = 'cmd_vel[0,-0.01,0]'
-# rot_der = 'cmd_vel[0,0,0.07]'
-# rot_iz = 'cmd_vel[0,0,-0.07]'
-# parar = 'cmd_vel[0,0,0]'
-# delder = 'cmd_vel[0.025,-0.015,0.16]'
-# deliz = 'cmd_vel[0.025,0.015,-0.16]'
 sensor = 'getSensors'
-x = 0.03
-y = 0
-z = 0
-comando = 'cmd_vel['+str(x)+','+str(y)+','+str(z)+']'
-cont = 0
-bol = 0
 
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
@@ -43,7 +26,7 @@ def sensores():
 
 
 while True:
-    cont=0
+
     # Recibimos la inforación del arduino y lo imprimimos por pantalla
     
     sensores()
