@@ -1,21 +1,34 @@
-from cgitb import text
 from tkinter import *
-from tkinter import font
+import tkinter 
+import os
 
-robot = Tk()
+window = tkinter.Tk()
+window.resizable(False, False)
 
-app_width = 1000
-app_height = 500
+def obrir_manual():
+    window.destroy()
+    os.system('manual.py')
 
-screen_width = robot.winfo_screenwidth()
-screen_height = robot.winfo_screenheight()
+def obrir_automatic():
+    window.destroy()
+    os.system('automatic.py')
+    
+label = Label(window, text="Com vols moure el robot?")
+label.pack(anchor=CENTER)
+label.config(font=("Helvetica",24)) 
 
-robot.geometry(f'{app_width}x{app_height}+{100}+{100}')
+window_width = 625
+window_height = 300
 
-botonPIzquierda=Button(text="Manual", width=10, height=5)
-botonPDerecha=Button(text="Automatico", width=10, height=5)
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
 
-botonPIzquierda.grid(row=3, column=0)
-botonPDerecha.grid(row=3, column=4)
+x = int((screen_width/2) - (window_width/2))
+y = int((screen_height/2) - (window_height/2))
 
-robot.mainloop()
+window.geometry(f'{window_width}x{window_height}+{x}+{y}')
+
+boto1 = tkinter.Button(window, text="Automatic", command=obrir_automatic).place(x=230, y=100)
+boto2 = tkinter.Button(window, text="Manual", command=obrir_manual).place(x=330, y=100)
+
+window.mainloop ()
