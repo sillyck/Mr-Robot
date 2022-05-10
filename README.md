@@ -1,8 +1,10 @@
-# Mr. Robot
 
-## Proyecto Robot
+# Proyecto Robot
 
 Proyecto donde se programa el movimiento del robot con sensores
+
+
+![Mr. Robot](https://github.com/EloySPAIN/PythonArduino/blob/master/logoMrRobot-senseFondo.png)
 
 
 ## Documentation
@@ -32,3 +34,16 @@ al ejecutar el codigo, este tiene 2 botones que redirige hacia la interfaz autom
 
 El fichero automatic.py es la interfaz del modo automatico, tiene un boton para apagar al robot y otro para volver a la interfaz principal.    
 El fichero manual.py es la interfaz del modo manual, tiene botones con flechas para moverlo, hace lo mismo que con las teclas WASD.
+
+## Features
+
+- Acabar la interfaz grafica
+- Mejorar el movimiento de proximidad
+- Brazo mecanico
+- Mejorar movimiento en modo automatico
+
+
+## Authors
+
+- [@EloySPAIN](https://github.com/EloySPAIN)
+- [@JordiR](https://github.com/sillyck)
