@@ -1,5 +1,5 @@
 
-# Proyecto Robot
+# Mr. Robot
 
 Proyecto donde se programa el movimiento del robot con sensores
 
