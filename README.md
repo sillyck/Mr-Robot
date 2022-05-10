@@ -35,7 +35,7 @@ al ejecutar el codigo, este tiene 2 botones que redirige hacia la interfaz autom
 El fichero automatic.py es la interfaz del modo automatico, tiene un boton para apagar al robot y otro para volver a la interfaz principal.    
 El fichero manual.py es la interfaz del modo manual, tiene botones con flechas para moverlo, hace lo mismo que con las teclas WASD.
 
-## Features
+## Roadmap
 
 - Acabar la interfaz grafica
 - Mejorar el movimiento de proximidad
