@@ -6,7 +6,7 @@ import serial
 
 # Variables, velocidades del robot
 delante = 'cmd_vel[0.04,0,0]'
-atras = 'cmd_vel[-0.1,0,0]'
+atras = 'cmd_vel[-0.06,0,0]'
 derecha = 'cmd_vel[0.02,0.005,0]'
 derecha2 = 'cmd_vel[0,0.01,0]'
 izquierda = 'cmd_vel[0.02,-0.005,0]'
@@ -18,8 +18,12 @@ delder = 'cmd_vel[0.025,-0.015,0.16]'
 deliz = 'cmd_vel[0.025,0.015,-0.16]'
 sensor = 'getSensors'
 
+fin = False
+
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
+
+
 def sensores():
     robot.write(sensor.encode())
     robot.write('\n'.encode())
@@ -27,7 +31,7 @@ def sensores():
 def proximidad():
     #Codigo para los sensores de proximidad 
     
-    if array_sensores[8] > 50 or array_sensores[9] > 50 or array_sensores[10] > 50 or array_sensores[11] > 50:
+    if array_sensores[8] > 90 or array_sensores[9] > 90 or array_sensores[10] > 90 or array_sensores[11] > 90:
         robot.write(parar.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
@@ -35,6 +39,15 @@ def proximidad():
 
     elif array_sensores[8] == -1 or array_sensores[9] == -1 or array_sensores[10] == -1 or array_sensores[11] == -1:
         print("")
+
+def aatras():
+        robot.write(atras.encode())
+        robot.write('\n'.encode())
+
+def adel():
+        robot.write(delante.encode())
+        robot.write('\n'.encode())
+        proximidad()
     
 
 while True:
@@ -62,6 +75,7 @@ while True:
         robot.write('\n'.encode())
         variable = robot.readline()
         proximidad()
+        fin = False
     
     elif array_sensores[0] == 2500:
         robot.write(izquierda2.encode())
@@ -83,13 +97,13 @@ while True:
             variable = robot.readline()
         proximidad()
 
-    elif array_sensores[4] == 2500:
+    elif array_sensores[4] == 2500 or array_sensores[5] == 2500:
         robot.write(derecha.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
         proximidad()
 
-    elif array_sensores[3] == 2500:
+    elif array_sensores[3] == 2500 or array_sensores[2] == 2500:
         robot.write(izquierda.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
@@ -113,11 +127,13 @@ while True:
         variable = robot.readline()
         proximidad()
 
-        
-
-
-
-
-
-    
-
+    elif array_sensores[1] < 2000 and array_sensores[2] < 2000 and array_sensores[0] < 2000 and array_sensores[3] < 2000  and array_sensores[4] < 2000 and array_sensores[5] < 2000 and array_sensores[6] < 2000 and array_sensores[7] < 2000 and fin == False and array_sensores[3] != -1 and array_sensores[4] != -1:
+        adel()
+        variable = robot.readline()
+        proximidad()
+        print("f")
+        if array_sensores[3] != 2500 and array_sensores[4] != 2500:
+            aatras()
+            variable = robot.readline()
+            fin=True
+            print("t")
