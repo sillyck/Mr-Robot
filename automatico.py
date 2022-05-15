@@ -37,7 +37,7 @@ def proximidad():
 
     elif array_sensores[8] == -1 or array_sensores[9] == -1 or array_sensores[10] == -1 or array_sensores[11] == -1:
         print("")
-
+#Funciones para el movimiento del robot
 def aatras():
         robot.write(atras.encode())
         robot.write('\n'.encode())
@@ -129,7 +129,7 @@ while True:
     elif array_sensores[1] == 2500 and array_sensores[2] == 2500 and array_sensores[0] == 2500 and array_sensores[3] == 2500  and array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] == 2500 and array_sensores[7] == 2500 or array_sensores[1] == 2500 and array_sensores[2] == 2500 and array_sensores[0] == 2500 and array_sensores[3] == 2500  and array_sensores[4] == 2500 and array_sensores[5] == 2500 or array_sensores[2] == 2500 and array_sensores[3] == 2500  and array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] == 2500 and array_sensores[7] == 2500:
         adel()
         variable = robot.readline()
-
+    #Elif para detectar si es linia discontinua
     elif array_sensores[1] < 2000 and array_sensores[2] < 2000 and array_sensores[0] < 2000 and array_sensores[3] < 2000  and array_sensores[4] < 2000 and array_sensores[5] < 2000 and array_sensores[6] < 2000 and array_sensores[7] < 2000 and fin == False and array_sensores[3] != -1 and array_sensores[4] != -1:
         adel()
         variable = robot.readline()
