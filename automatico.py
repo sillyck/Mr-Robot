@@ -5,14 +5,12 @@ from numpy import array
 import serial
 
 # Variables, velocidades del robot
-delante = 'cmd_vel[0.04,0,0]'
+adelante = 'cmd_vel[0.04,0,0]'
 atras = 'cmd_vel[-0.06,0,0]'
 derecha = 'cmd_vel[0.02,0.005,0]'
 derecha2 = 'cmd_vel[0,0.01,0]'
 izquierda = 'cmd_vel[0.02,-0.005,0]'
 izquierda2 = 'cmd_vel[0,-0.01,0]'
-rot_der = 'cmd_vel[0,0,0.07]'
-rot_iz = 'cmd_vel[0,0,-0.07]'
 parar = 'cmd_vel[0,0,0]'
 delder = 'cmd_vel[0.025,-0.015,0.16]'
 deliz = 'cmd_vel[0.025,0.015,-0.16]'
@@ -45,10 +43,33 @@ def aatras():
         robot.write('\n'.encode())
 
 def adel():
-        robot.write(delante.encode())
+        robot.write(adelante.encode())
         robot.write('\n'.encode())
         proximidad()
-    
+def ader():
+        robot.write(derecha.encode())
+        robot.write('\n'.encode())
+        proximidad()
+def aiz():
+        robot.write(izquierda.encode())
+        robot.write('\n'.encode())
+        proximidad()
+def ader2():
+        robot.write(derecha2.encode())
+        robot.write('\n'.encode())
+        proximidad()
+def aiz2():
+        robot.write(izquierda2.encode())
+        robot.write('\n'.encode())
+        proximidad()
+def adelder():
+        robot.write(delder.encode())
+        robot.write('\n'.encode())
+        proximidad()
+def adeliz():
+        robot.write(deliz.encode())
+        robot.write('\n'.encode())
+        proximidad()
 
 while True:
 
@@ -71,61 +92,43 @@ while True:
     sleep(1)
 
     if array_sensores[3] == 2500 and array_sensores[4] == 2500:
-        robot.write(delante.encode())
-        robot.write('\n'.encode())
+        adel()
         variable = robot.readline()
-        proximidad()
         fin = False
-    
+   
     elif array_sensores[0] == 2500:
-        robot.write(izquierda2.encode())
-        robot.write('\n'.encode())
+        aiz2()
         variable = robot.readline()
         if array_sensores[0] == 2500 and  array_sensores[1] == 2500:
-            robot.write(deliz.encode())
-            robot.write('\n'.encode())
+            adeliz()
             variable = robot.readline()
-        proximidad()
 
     elif array_sensores[7] == 2500:
-        robot.write(derecha2.encode())
-        robot.write('\n'.encode())
+        ader2()
         variable = robot.readline()
         if array_sensores[7] == 2500 and  array_sensores[6] == 2500:
-            robot.write(delder.encode())
-            robot.write('\n'.encode())
+            adeldir()
             variable = robot.readline()
-        proximidad()
 
     elif array_sensores[4] == 2500 or array_sensores[5] == 2500:
-        robot.write(derecha.encode())
-        robot.write('\n'.encode())
+        ader()
         variable = robot.readline()
-        proximidad()
 
     elif array_sensores[3] == 2500 or array_sensores[2] == 2500:
-        robot.write(izquierda.encode())
-        robot.write('\n'.encode())
+        aiz()
         variable = robot.readline()
-        proximidad()
 
     elif array_sensores[1] == 2500 and array_sensores[2] == 2500 or array_sensores[0] == 2500 and array_sensores[1] == 2500  or array_sensores[0] == 2500:
-        robot.write(deliz.encode())
-        robot.write('\n'.encode())
+        adeliz()
         variable = robot.readline()
-        proximidad()
 
     elif array_sensores[6] == 2500 and array_sensores[5] == 2500 or array_sensores[7] == 2500 and array_sensores[6] == 2500 or array_sensores[7] == 2500:
-        robot.write(delder.encode())
-        robot.write('\n'.encode())
+        adelder()
         variable = robot.readline()
-        proximidad()
     
     elif array_sensores[1] == 2500 and array_sensores[2] == 2500 and array_sensores[0] == 2500 and array_sensores[3] == 2500  and array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] == 2500 and array_sensores[7] == 2500 or array_sensores[1] == 2500 and array_sensores[2] == 2500 and array_sensores[0] == 2500 and array_sensores[3] == 2500  and array_sensores[4] == 2500 and array_sensores[5] == 2500 or array_sensores[2] == 2500 and array_sensores[3] == 2500  and array_sensores[4] == 2500 and array_sensores[5] == 2500 and array_sensores[6] == 2500 and array_sensores[7] == 2500:
-        robot.write(delante.encode())
-        robot.write('\n'.encode())
+        adel()
         variable = robot.readline()
-        proximidad()
 
     elif array_sensores[1] < 2000 and array_sensores[2] < 2000 and array_sensores[0] < 2000 and array_sensores[3] < 2000  and array_sensores[4] < 2000 and array_sensores[5] < 2000 and array_sensores[6] < 2000 and array_sensores[7] < 2000 and fin == False and array_sensores[3] != -1 and array_sensores[4] != -1:
         adel()
