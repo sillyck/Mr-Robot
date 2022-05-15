@@ -21,22 +21,20 @@ fin = False
 # Conexión a arduino
 robot = serial.Serial('/dev/ttyACM0', 115200)
 
-
+#Funcion para obtener los sensores
 def sensores():
     robot.write(sensor.encode())
     robot.write('\n'.encode())
-
-def proximidad():
-    #Codigo para los sensores de proximidad 
-    
+#Funcion para detectar obstaculos con los sensores de proximidad
+def proximidad(): 
     if array_sensores[8] > 90 or array_sensores[9] > 90 or array_sensores[10] > 90 or array_sensores[11] > 90:
         robot.write(parar.encode())
         robot.write('\n'.encode())
         variable = robot.readline()
-        print("no")
-
+    #Si los sensores detecta -1, no hace nada
     elif array_sensores[8] == -1 or array_sensores[9] == -1 or array_sensores[10] == -1 or array_sensores[11] == -1:
         print("")
+        
 #Funciones para el movimiento del robot
 def aatras():
         robot.write(atras.encode())
