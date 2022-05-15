@@ -39,6 +39,7 @@ def proximidad():
 def aatras():
         robot.write(atras.encode())
         robot.write('\n'.encode())
+        proximidad()
 
 def adel():
         robot.write(adelante.encode())
