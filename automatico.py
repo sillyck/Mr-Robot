@@ -6,7 +6,10 @@ import serial
 
 # Variables, velocidades del robot
 adelante = 'cmd_vel[0.04,0,0]'
+<<<<<<< HEAD
 adelante2 = 'cmd_vel[0.05,0,0]'
+=======
+>>>>>>> a2f08d01a59ecc350928e2c615473e2832e637a3
 atras = 'cmd_vel[-0.06,0,0]'
 derecha = 'cmd_vel[0.02,0.005,0]'
 derecha2 = 'cmd_vel[0,0.01,0]'
@@ -46,10 +49,13 @@ def adel():
         robot.write(adelante.encode())
         robot.write('\n'.encode())
         proximidad()
+<<<<<<< HEAD
 def adel2():
         robot.write(adelante2.encode())
         robot.write('\n'.encode())
         proximidad()
+=======
+>>>>>>> a2f08d01a59ecc350928e2c615473e2832e637a3
 def ader():
         robot.write(derecha.encode())
         robot.write('\n'.encode())
