@@ -106,7 +106,7 @@ while True:
         ader2()
         variable = robot.readline()
         if array_sensores[7] == 2500 and  array_sensores[6] == 2500:
-            adeldir()
+            adelder()
             variable = robot.readline()
 
     elif array_sensores[4] == 2500 or array_sensores[5] == 2500:
